@@ -1,10 +1,12 @@
 from math import *
 import eel
-
+import time
+from memory_profiler import profile
+# Подключение библиотек
 
 class Palindrom:
     s = ""
-
+    # алгоритм для поиска наибольшего палиндрома
     def alg(self, inps):
         self.s = inps
         n = len(self.s)
@@ -29,6 +31,7 @@ class House:
     max_p = 1
     max_m = 1
 
+    # алгоритм для поиска наибольших комбинаций
     def alg(self, a, b, c ,m):
         self.max_g = a
         self.max_p = b
@@ -37,13 +40,13 @@ class House:
         answer = (factorial((self.max_elem) / (factorial(self.max_elem - (self.max_g+self.max_p+self.max_m)))))
         return answer
 
-
+# инициализация єкземпляров класс
 newpal = Palindrom()
 newhouse = House()
 
 
-
 @eel.expose
+
 def add_str(st):
     return newpal.alg(st)
 
@@ -51,6 +54,6 @@ def add_str(st):
 def add_el(a, b, c ,m):
     return newhouse.alg(int(a), int(b), int(c), int(m))
 
-
+# методы для связывания интерфейса и алгоритмов
 eel.init("web")
 eel.start("index.html", size=(1000, 900))
